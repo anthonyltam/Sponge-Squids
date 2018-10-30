@@ -20,7 +20,8 @@ The application's core technologies will be comprised of Javascript, HTML &CSS.
 
 ## Implementation Timeline
 * Day 1: Completion of proposal, initial setup of repo both locally and on Github.
-* Days 2-3: Build out logic of game, have game playable on the console.
+* Day 2: Complete Canvas demo.
+* Day 3: Build out logic of game, have game playable on the console.
 * Day 4: CSS and styling of game.
 * Day 5: Completion of game.
 * Days 6-7: Finish set-up, update Production ReadMe, final deploymemt. 
