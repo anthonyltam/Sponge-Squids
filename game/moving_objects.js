@@ -19,23 +19,13 @@ class MovingObject {
   }
  
   move(timeDelta) {
-    // console.log(this.vel)
-    const velocityScale = timeDelta / NORMAL_FRAME_TIME_DELTA,
-      offsetX = this.vel * velocityScale;
-      // offsetY = this.vel[1] * velocityScale;
+    const velocityScale = timeDelta / NORMAL_FRAME_TIME_DELTA;
+    const offsetX = this.vel * velocityScale;
 
-      this.pos = [this.pos[0] + offsetX, this.pos[1]];
-
-    // if (this.game.isOutOfBounds(this.pos)) {
-    //   if (this.isWrappable) {
-    //     this.pos = this.game.wrap(this.pos);
-    //   } else {
-    //     this.remove();
-    //   }
-    // }
-  // }
-    // console.log('in move')
+    this.pos = [this.pos[0] + offsetX, this.pos[1]];
   }
+
+  
 }
 
 const NORMAL_FRAME_TIME_DELTA = 1000 / 60;

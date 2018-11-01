@@ -16,26 +16,26 @@ class Game {
       this.turtles.push(
         new Turtle({
           pos: this.randomPosition(),
-          vel: 10,
-          rad: 5,
-          height: 6,
-          width: 6
+          vel: Math.ceil(Math.random() * 5),
+          rad: 10
         })
       );
-      // debugger
     }
     console.log(this.turtles);
   }
 
   randomPosition() {
-    return [
-      Game.DIM_X * Math.random(),
-      Game.DIM_Y * Math.random()
-    ];
+    const positions = [0, Game.DIM_X];
+    const xPosition = positions[Math.floor(Math.random() * positions.length)];
+
+      return [
+        // xPosition,
+        0,
+        Game.DIM_Y * Math.random()
+      ];
   }
 
   draw(ctx) {
-    // console.log('blue');
     ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
     ctx.fillStyle = Game.BG_COLOR;
     ctx.fillRect(0, 0, Game.DIM_X, Game.DIM_Y);
@@ -46,7 +46,6 @@ class Game {
   }
 
   moveTurtles(delta) {
-    // console.log('in moveTurtles');
     this.turtles.forEach(turtle => turtle.move(delta));
   }
 
@@ -59,6 +58,6 @@ class Game {
 Game.DIM_X = 800;
 Game.DIM_Y = 400;
 Game.BG_COLOR = 'orange';
-Game.NUM_TURTLES = 1;
+Game.NUM_TURTLES = 7;
 
 export default Game;

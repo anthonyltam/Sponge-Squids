@@ -2,7 +2,7 @@ class GameView {
   constructor(game, ctx) {
     this.ctx = ctx;
     this.game = game;
-    this.turtle = this.game.addTurtles();
+    // this.turtle = this.game.addTurtles();
   }
 
   // request
