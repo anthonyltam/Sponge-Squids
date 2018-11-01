@@ -15,18 +15,24 @@ class Game {
     for (let i = 0; i < Game.NUM_TURTLES; i++) {
       this.turtles.push(
         new Turtle({
-          pos: [10, 10],
+          pos: this.randomPosition(),
           vel: 10,
           rad: 5,
           height: 6,
           width: 6
         })
       );
+      // debugger
     }
     console.log(this.turtles);
   }
 
-  randomPosition() {}
+  randomPosition() {
+    return [
+      Game.DIM_X * Math.random(),
+      Game.DIM_Y * Math.random()
+    ];
+  }
 
   draw(ctx) {
     // console.log('blue');
@@ -40,6 +46,7 @@ class Game {
   }
 
   moveTurtles(delta) {
+    // console.log('in moveTurtles');
     this.turtles.forEach(turtle => turtle.move(delta));
   }
 
