@@ -1,21 +1,22 @@
-import MovingObject from './moving_objects';
 import Game from './game';
-
-console.log('inside entry file');
+import GameView from './game_view';
 
 document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById('myCanvas');
-  // const c = canvas.getContext('2d');
-  const start = document.getElementById('start');
+  canvas.width = Game.DIM_X;
+  canvas.height = Game.DIM_Y;
 
+  const ctx = canvas.getContext("2d");
+
+  const game = new Game;
+  new GameView(game, ctx).start();
+
+  // const start = document.getElementById('start');
+  // window.MovingObject = MovingObject;
   
+  // const gameStart = () => {
+  //   game.draw();
+  // };
   
-  
-  // let game = new Game;
-  
-  const gameStart = () => {
-    console.log('blue');
-    // game.over();
-  };
-  start.addEventListener('click', gameStart);
+  // start.addEventListener('click', gameStart);
 });
