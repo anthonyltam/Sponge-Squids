@@ -53,11 +53,14 @@ class Game {
     this.moveTurtles(delta);
     // this.checkCollisions();
   }
-}
 
+  // draw()
+}
+// Game.draw();
+// Game.draw()
 Game.DIM_X = 800;
 Game.DIM_Y = 400;
 Game.BG_COLOR = 'orange';
-Game.NUM_TURTLES = 7;
+Game.NUM_TURTLES = 2;
 
 export default Game;

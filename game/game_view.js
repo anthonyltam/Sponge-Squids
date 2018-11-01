@@ -9,7 +9,7 @@ class GameView {
   start() {
     this.lastTime = 0;
     requestAnimationFrame(this.animate.bind(this));
-
+    
   }
 
   animate(time) {

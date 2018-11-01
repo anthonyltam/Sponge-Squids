@@ -18,5 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
   //   game.draw();
   // };
   
+  setInterval( () => {
+    game.addTurtles();
+  }, 1000);
+
   // start.addEventListener('click', gameStart);
 });
