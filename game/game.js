@@ -23,10 +23,11 @@ class Game {
 
   addTurtles() {
     for (let i = 0; i < Game.NUM_TURTLES; i++) {
+      const direction = ([-1, 1])[Math.floor(Math.random() * 2)];
       this.turtles.push(
         new Turtle({
-          pos: this.randomPosition(),
-          vel: Math.ceil(Math.random() * 5),
+          pos: this.randomPosition(direction),
+          vel: Math.ceil(Math.random() * 5) * direction,
           rad: 10
         })
       );
@@ -38,15 +39,18 @@ class Game {
     return this.user.concat(this.turtles);
   }
 
-  randomPosition() {
-    const positions = [0, Game.DIM_X];
-    const xPosition = positions[Math.floor(Math.random() * positions.length)];
+  randomPosition(direction) {
+    let xPosition;
 
-      return [
-        // xPosition,
-        0,
-        Game.DIM_Y * Math.random()
-      ];
+    if (direction < 0 ){
+      xPosition = Game.DIM_X;
+    } else {
+      xPosition = 0;
+    }
+    return [
+      xPosition,
+      Game.DIM_Y * Math.random()
+    ];
   }
 
   playerPosition() {
