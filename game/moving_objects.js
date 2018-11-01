@@ -1,3 +1,5 @@
+import Util from './util';
+
 class MovingObject {
   constructor(options) {
     this.pos = options.pos;
@@ -5,7 +7,7 @@ class MovingObject {
     this.rad = options.rad;
     this.height = options.height;
     this.width = options.width;
-    this.color = "black";
+    this.color = options.color;
 
     this.draw = this.draw.bind(this);
   }
@@ -25,7 +27,11 @@ class MovingObject {
     this.pos = [this.pos[0] + offsetX, this.pos[1]];
   }
 
-  
+  isCollidedWith(otherObject) {
+    const centerDist = Util.dist(this.pos, otherObject.pos);
+    return centerDist < (this.radius + otherObject.radius);
+  }
+
 }
 
 const NORMAL_FRAME_TIME_DELTA = 1000 / 60;
