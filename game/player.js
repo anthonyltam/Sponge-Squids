@@ -1,4 +1,5 @@
 import MovingObject from './moving_objects';
+import Turtle from './turtle';
 
 class Player extends MovingObject {
   constructor(options = {}) {
@@ -7,6 +8,21 @@ class Player extends MovingObject {
     options.color = 'green';
     super(options);
 
+  }
+
+  collideWith(otherObject) {
+    if (otherObject instanceof Turtle) {
+      // otherObject.relocate();
+      console.log('GAMEOVER!');
+      return true;
+    } else if (otherObject instanceof Player) {
+      // this.remove();
+      // otherObject.remove();
+      // console.log('player');
+      return true;
+    }
+
+    return false;
   }
 }
 

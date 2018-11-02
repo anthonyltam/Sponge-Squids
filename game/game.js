@@ -35,7 +35,7 @@ class Game {
   }
 
   allObjects() {
-    console.log(this.user.concat(this.turtles));
+    // console.log(this.user.concat(this.turtles));
     return this.user.concat(this.turtles);
   }
 
@@ -67,7 +67,7 @@ class Game {
 
 
     this.allObjects().forEach((object) => {
-      console.log(object);
+      // console.log(object);
       object.draw(ctx);
     });
   }
@@ -79,23 +79,25 @@ class Game {
 
   step(delta) {
     this.moveTurtles(delta);
-    // this.checkCollisions();
+    this.checkCollisions();
   }
 
-  // checkCollisions() {
-  //   const allObjects = this.allObjects();
-  //   for (let i = 0; i < allObjects.length; i++) {
-  //     for (let j = 0; j < allObjects.length; j++) {
-  //       const obj1 = allObjects[i];
-  //       const obj2 = allObjects[j];
+  checkCollisions() {
+    const allObjects = this.allObjects();
 
-  //       if (obj1.isCollidedWith(obj2)) {
-  //         const collision = obj1.collideWith(obj2);
-  //         if (collision) return;
-  //       }
-  //     }
-  //   }
-  // }
+    for (let i = 0; i < allObjects.length; i++) {
+      for (let j = 0; j < allObjects.length; j++) {
+        const obj1 = allObjects[i];
+        const obj2 = allObjects[j];
+
+        if (obj1.isCollidedWith(obj2)) {
+          const collision = obj1.collideWith(obj2);
+          // if (collision) console.log('DANGER');
+          if (collision) return;
+        }
+      }
+    }
+  }
 
 }
 

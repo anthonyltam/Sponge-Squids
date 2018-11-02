@@ -19,7 +19,7 @@ class MovingObject {
     ctx.fill();
     ctx.closePath();
   }
- 
+
   move(timeDelta) {
     const velocityScale = timeDelta / NORMAL_FRAME_TIME_DELTA;
     const offsetX = this.vel * velocityScale;
@@ -29,8 +29,9 @@ class MovingObject {
 
   isCollidedWith(otherObject) {
     const centerDist = Util.dist(this.pos, otherObject.pos);
-    return centerDist < (this.radius + otherObject.radius);
+    return centerDist < this.rad + otherObject.rad;
   }
+
 
 }
 
