@@ -13,11 +13,13 @@ class Game {
   over() {
     console.log("GAME OVER!");
   }
-
+  
   addPlayer() {
-    const player = new Player( {pos: this.playerPosition() });
+    let pos =  this.playerPosition() 
+    console.log(pos)
+    const player = new Player({ pos: pos} );
     this.user.push(player);
-
+    console.log('constructor', player);
     return player;
   }
 
@@ -27,7 +29,7 @@ class Game {
       this.turtles.push(
         new Turtle({
           pos: this.randomPosition(direction),
-          vel: Math.ceil(Math.random() * 5) * direction,
+          vel: [Math.ceil(Math.random() * 5) * direction, 0],
           rad: 10
         })
       );
@@ -35,7 +37,6 @@ class Game {
   }
 
   allObjects() {
-    // console.log(this.user.concat(this.turtles));
     return this.user.concat(this.turtles);
   }
 
@@ -67,32 +68,36 @@ class Game {
 
 
     this.allObjects().forEach((object) => {
-      // console.log(object);
       object.draw(ctx);
     });
   }
   
 
-  moveTurtles(delta) {
-    this.turtles.forEach(turtle => turtle.move(delta));
+  // moveTurtles(delta) {
+  //   this.turtles.forEach(turtle => turtle.move(delta));
+  // }
+
+  moveObjects(delta) {
+    // this.user[0].move();
+    this.allObjects().forEach( obj => obj.move(delta));
+    console.log(this.user[0]);
   }
 
   step(delta) {
-    this.moveTurtles(delta);
+    // this.moveTurtles(delta);
+    this.moveObjects(delta);
     this.checkCollisions();
   }
 
   checkCollisions() {
     const allObjects = this.allObjects();
-    // console.log(allObjects);
+
     for (let i = 0; i < allObjects.length; i++) {
       for (let j = 0; j < allObjects.length; j++) {
         const obj1 = allObjects[i];
         const obj2 = allObjects[j];
-        // console.log(obj1, obj2);
         if (obj1.isCollidedWith(obj2)) {
           const collision = obj1.collideWith(obj2);
-          // if (collision) console.log('DANGER');
           if (collision) return;
         }
       }

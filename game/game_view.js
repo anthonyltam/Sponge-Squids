@@ -3,11 +3,19 @@ class GameView {
     this.ctx = ctx;
     this.game = game;
     this.player = game.addPlayer();
-    // this.turtle = this.game.addTurtles();
   }
 
-  // request
+  bindKeyHandlers() {
+    const player = this.player;
+
+    Object.keys(GameView.MOVES).forEach( k => {
+      const move = GameView.MOVES[k];
+      key(k, () => { player.power(move); });
+    });
+  }
+
   start() {
+    this.bindKeyHandlers();
     this.lastTime = 0;
     requestAnimationFrame(this.animate.bind(this));
     
@@ -21,6 +29,14 @@ class GameView {
     this.lastTime = time;
     requestAnimationFrame(this.animate.bind(this));
   }
+
 }
+
+GameView.MOVES = {
+  w: [0, -1],
+  a: [-1, 0],
+  s: [0, 1],
+  d: [1, 0]
+};
 
 export default GameView;

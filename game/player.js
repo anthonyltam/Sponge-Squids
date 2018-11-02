@@ -10,20 +10,16 @@ class Player extends MovingObject {
 
   }
 
-  // collideWith(otherObject) {
-  //   if (otherObject instanceof Turtle) {
-  //     // otherObject.relocate();
-  //     console.log('GAMEOVER!');
-    //   return true;
-    // } else if (otherObject instanceof Player) {
-    //   // this.remove();
-    //   // otherObject.remove();
-    //   // console.log('player');
-    //   return true;
-    // }
+  // move() { console.log('hello')}
 
-    // return false;
-  // }
+  power(move) {
+    console.log('moving');
+    // console.log(move)
+    this.vel[0] += move[0];
+    this.vel[1] += move[1];
+    // console.log(new_vel, new_vel2);
+  }
+
 }
 
 Player.RADIUS = 15;

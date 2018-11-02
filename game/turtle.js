@@ -1,6 +1,6 @@
 import MovingObject from './moving_objects';
 import Player from './player';
-// import Util from './util';
+import Util from './util';
 
 class Turtle extends MovingObject {
   constructor(options = {}) {
@@ -14,7 +14,6 @@ class Turtle extends MovingObject {
   collideWith(otherObject) {
     if (otherObject instanceof Turtle) {
       // otherObject.relocate();
-      // console.log("HIT TURTLE!");
       // return true;
     } else if (otherObject instanceof Player) {
       // this.remove();
