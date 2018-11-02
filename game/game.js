@@ -15,11 +15,13 @@ class Game {
   }
   
   addPlayer() {
-    let pos =  this.playerPosition() 
-    console.log(pos)
-    const player = new Player({ pos: pos} );
+
+    const player = new Player({
+      pos: this.playerPosition(),
+      game: this
+    });
+
     this.user.push(player);
-    console.log('constructor', player);
     return player;
   }
 
@@ -30,7 +32,8 @@ class Game {
         new Turtle({
           pos: this.randomPosition(direction),
           vel: [Math.ceil(Math.random() * 5) * direction, 0],
-          rad: 10
+          rad: 10,
+          game: this
         })
       );
     }
@@ -38,6 +41,11 @@ class Game {
 
   allObjects() {
     return this.user.concat(this.turtles);
+  }
+
+  isOutOfBounds(pos) {
+    return (pos[0] < 0) || (pos[1] < 0) ||
+      (pos[0] > Game.DIM_X) || (pos[1] > Game.DIM_Y);
   }
 
   randomPosition(direction) {

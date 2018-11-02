@@ -12,7 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
   new GameView(game, ctx).start();
 
   // const start = document.getElementById('start');
-  // window.MovingObject = MovingObject;
+  // start.addEventListener('click', gameStart);
+
   
   // const gameStart = () => {
   //   game.draw();
@@ -22,5 +23,4 @@ document.addEventListener("DOMContentLoaded", () => {
     game.addTurtles();
   }, 1000);
 
-  // start.addEventListener('click', gameStart);
 });

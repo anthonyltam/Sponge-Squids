@@ -1,4 +1,5 @@
 import Util from './util';
+// import Game from './game';
 
 class MovingObject {
   constructor(options) {
@@ -8,6 +9,8 @@ class MovingObject {
     this.height = options.height;
     this.width = options.width;
     this.color = options.color;
+    this.game = options.game;
+    this.wrappable = true;
 
     this.draw = this.draw.bind(this);
   }
@@ -26,7 +29,19 @@ class MovingObject {
     const offsetY = this.vel[1] * velocityScale;
 
     this.pos = [this.pos[0] + offsetX, this.pos[1] + offsetY];
-    // console.log(this.player)
+
+    if (this.game.isOutOfBounds(this.pos)) {
+      if (this.isWrappable) {
+        this.pos = this.game.wrap(this.pos);
+      } else {
+        console.log('NEED TO REMOVE');
+        // this.remove();
+      }
+    }
+  }
+
+  remove() {
+    this.game.remove(this);
   }
 
   isCollidedWith(otherObject) {
