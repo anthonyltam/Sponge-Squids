@@ -30,17 +30,21 @@ class MovingObject {
 
     this.pos = [this.pos[0] + offsetX, this.pos[1] + offsetY];
 
-    if (this.game.isOutOfBounds(this.pos)) {
+    if (this.game.isOutOfBounds(this.pos, this.rad)) {
       if (this.isWrappable) {
-        this.pos = this.game.wrap(this.pos);
+        let pos = this.game.wrap(this.pos, this);
+        let [x, y] = pos;
+        this.pos = [x + this.rad, y + this.rad];
       } else {
-        console.log('NEED TO REMOVE');
-        // this.remove();
+        // console.log('NEED TO REMOVE');
+        // console.log(this)
+        this.remove();
       }
     }
   }
 
   remove() {
+    // console.log('in remove!')
     this.game.remove(this);
   }
 

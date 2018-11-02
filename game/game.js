@@ -1,5 +1,6 @@
 import Turtle from './turtle';
 import Player from './player';
+import Util from './util';
 
 class Game {
   constructor() {
@@ -13,9 +14,8 @@ class Game {
   over() {
     console.log("GAME OVER!");
   }
-  
-  addPlayer() {
 
+  addPlayer() {
     const player = new Player({
       pos: this.playerPosition(),
       game: this
@@ -25,9 +25,13 @@ class Game {
     return player;
   }
 
+  wrap(pos) {
+    return [Util.wrap(pos[0], Game.DIM_X), Util.wrap(pos[1], Game.DIM_Y)];
+  }
+
   addTurtles() {
     for (let i = 0; i < Game.NUM_TURTLES; i++) {
-      const direction = ([-1, 1])[Math.floor(Math.random() * 2)];
+      const direction = [-1, 1][Math.floor(Math.random() * 2)];
       this.turtles.push(
         new Turtle({
           pos: this.randomPosition(direction),
@@ -43,30 +47,27 @@ class Game {
     return this.user.concat(this.turtles);
   }
 
-  isOutOfBounds(pos) {
-    return (pos[0] < 0) || (pos[1] < 0) ||
-      (pos[0] > Game.DIM_X) || (pos[1] > Game.DIM_Y);
+  isOutOfBounds(pos, rad = 0) {
+    // rad = 0;
+    if (rad === 10) rad = 0;
+    return (
+      pos[0] < rad || pos[1] < rad || pos[0] + rad > Game.DIM_X || pos[1] + rad > Game.DIM_Y
+    );
   }
 
   randomPosition(direction) {
     let xPosition;
 
-    if (direction < 0 ){
+    if (direction < 0) {
       xPosition = Game.DIM_X;
     } else {
       xPosition = 0;
     }
-    return [
-      xPosition,
-      Game.DIM_Y * Math.random()
-    ];
+    return [xPosition, Game.DIM_Y * Math.random()];
   }
 
   playerPosition() {
-    return [
-      Game.DIM_X / 2,
-      Game.DIM_Y / 2
-    ];
+    return [Game.DIM_X / 2, Game.DIM_Y / 2];
   }
 
   draw(ctx) {
@@ -74,21 +75,23 @@ class Game {
     ctx.fillStyle = Game.BG_COLOR;
     ctx.fillRect(0, 0, Game.DIM_X, Game.DIM_Y);
 
-
-    this.allObjects().forEach((object) => {
+    this.allObjects().forEach(object => {
       object.draw(ctx);
     });
   }
-  
-
-  // moveTurtles(delta) {
-  //   this.turtles.forEach(turtle => turtle.move(delta));
-  // }
 
   moveObjects(delta) {
     // this.user[0].move();
-    this.allObjects().forEach( obj => obj.move(delta));
-    console.log(this.user[0]);
+    this.allObjects().forEach(obj => obj.move(delta));
+  }
+
+  remove(object) {
+    if (object instanceof Turtle) {
+      this.turtles.splice(this.turtles.indexOf(object), 1);
+    } else {
+      let [x, y ] = this.user[0].vel;
+      this.user[0].vel = [0 , 0];
+    }
   }
 
   step(delta) {
@@ -111,7 +114,6 @@ class Game {
       }
     }
   }
-
 }
 
 Game.DIM_X = 800;

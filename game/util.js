@@ -5,7 +5,7 @@ const Util = {
     );
   },
 
-  wrap(coord, max) {
+  wrap(coord, max, obj) {
     if (coord < 0) {
       return max - (coord % max);
     } else if (coord > max) {

@@ -18,6 +18,7 @@ class Turtle extends MovingObject {
     } else if (otherObject instanceof Player) {
       // this.remove();
       // otherObject.remove();
+      console.log(this.game.turtles)
       alert('GAME OVER!');
       return true;
     }

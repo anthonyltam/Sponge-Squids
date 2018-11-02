@@ -13,7 +13,7 @@ class Player extends MovingObject {
   // move() { console.log('hello')}
 
   power(move) {
-    console.log('moving');
+    // console.log('moving');
     // console.log(move)
     this.vel[0] += move[0];
     this.vel[1] += move[1];
