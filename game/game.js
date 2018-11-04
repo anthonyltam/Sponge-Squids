@@ -72,8 +72,8 @@ class Game {
 
   draw(ctx) {
     ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
-    ctx.fillStyle = Game.BG_COLOR;
-    ctx.fillRect(0, 0, Game.DIM_X, Game.DIM_Y);
+    // ctx.fillStyle = Game.BG_COLOR;
+    // ctx.fillRect(0, 0, Game.DIM_X, Game.DIM_Y);
 
     this.allObjects().forEach(object => {
       object.draw(ctx);
@@ -116,8 +116,8 @@ class Game {
   }
 }
 
-Game.DIM_X = 800;
-Game.DIM_Y = 400;
+Game.DIM_X = 1000;
+Game.DIM_Y = 600;
 Game.BG_COLOR = 'orange';
 Game.NUM_TURTLES = 1;
 

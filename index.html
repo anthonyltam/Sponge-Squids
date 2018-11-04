@@ -6,6 +6,7 @@
   <script src='bundle/bundle.js'></script>
   <script src="vendor/keymaster.js"></script>
   <!-- <script src="/path/to/howler.js"></script> -->
+  <link rel="stylesheet" href="./stylesheets/game.css">
 
   <meta charset="utf-8" />
   <title>Turtle</title>
@@ -16,16 +17,25 @@
     }
 
     canvas {
-      background: #eee;
-      display: block;
+      /* background: rgba(189, 24, 24, 0.5); */
+      /* display: block; */
       margin: auto;
     }
   </style>
 </head>
 
 <body>
+ 
+<!--   
+  <script>
+    const load = () => {
+      console.log('ON LOAD!');
+    };
+    window.onLoad = load();
+  </script> -->
 
-  <canvas id="myCanvas"></canvas>
+
+    <canvas id="myCanvas"></canvas>
   
   <div class="button-container">
     <button type='button' id='start'>Start Game</button>
