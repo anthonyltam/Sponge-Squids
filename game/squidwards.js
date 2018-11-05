@@ -27,7 +27,7 @@ class Squidward extends MovingObject {
       // this.remove();
       // otherObject.remove();
       alert('GAME OVER! REFRESH TO RESTART');
-      return true;
+      // return true;
     }
 
     return false;

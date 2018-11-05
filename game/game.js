@@ -116,8 +116,8 @@ class Game {
   }
 }
 
-Game.DIM_X = 1000;
-Game.DIM_Y = 600;
+Game.DIM_X = 900;
+Game.DIM_Y = 500;
 
 Game.BG_COLOR = 'orange';
 Game.NUM_SQUIDWARDS = 1;
