@@ -20,18 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // };
   
   setInterval( () => {
-    game.addTurtles();
+    game.addsquidwards();
   }, 1000);
 
 });
-
-// FROM LA
-
-// function drawBackground() {
-//   vx += 1;
-//   ctxBg.drawImage(bgImg, 0, vx, height, width);
-//   ctxBg.drawImage(bgImg, 0, vx - 500, height, width);
-//   if (vx >= 500) {
-//     vx = 0;
-//   }
-// }

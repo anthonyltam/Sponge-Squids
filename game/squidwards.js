@@ -1,18 +1,17 @@
 import MovingObject from './moving_objects';
 import Player from './player';
-import Util from './util';
+// import Util from './util';
 
-class Turtle extends MovingObject {
+class Squidward extends MovingObject {
   constructor(options = {}) {
-    let squidward = new Image();
-    squidward.src = "assets/good-squid.png";
-    // squidward.src = "assets/Squidward.png";
-
-    options.color = "orange";
-    options.pos = options.pos || options.game.randomPosition();
     options.rad = options.rad;
+    options.pos = options.pos || options.game.randomPosition();
+    options.color = "orange";
     // options.vel = options.vel || Util.randomVec(DEFAULTS.SPEED);
     super(options);
+
+    let squidward = new Image();
+    squidward.src = "assets/good-squid.png";
     this.squidward = squidward;
   }
 
@@ -21,7 +20,7 @@ class Turtle extends MovingObject {
   }
 
   collideWith(otherObject) {
-    if (otherObject instanceof Turtle) {
+    if (otherObject instanceof Squidward) {
       // otherObject.relocate();
       // return true;
     } else if (otherObject instanceof Player) {
@@ -36,4 +35,4 @@ class Turtle extends MovingObject {
 
 }
 
-export default Turtle;
+export default Squidward;

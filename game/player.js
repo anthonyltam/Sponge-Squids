@@ -1,19 +1,16 @@
 import MovingObject from './moving_objects';
-import Turtle from './turtle';
+// import Squidward from './squidwards';
 
 class Player extends MovingObject {
   constructor(options = {}) {
-    let spongeBob = new Image();
-    spongeBob.src = "assets/sponge.png";
-    
     options.rad = Player.RADIUS;
     options.vel = options.vel || [0, 0];
     options.color = 'green';
     super(options);
     
-    // console.log(spongeBob);
+    let spongeBob = new Image();
+    spongeBob.src = "assets/sponge.png";
     this.spongeBob = spongeBob;
-    // console.log(this.spongeBob);
   }
 
   power(move) {
@@ -42,11 +39,3 @@ class Player extends MovingObject {
 Player.RADIUS = 15;
 
 export default Player;
-
-
-// this.imgObject.onLoad = new function () {
-//   this.ImageReady = true;
-//   console.log(this.imgObject);
-//   context.drawImage(this.imgObject, 120, this.posY); //this one throws the exception
-// }
-// this.imgObject.src = source; 

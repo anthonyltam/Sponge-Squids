@@ -1,10 +1,10 @@
-# TURTLE
+# Sponge & Squids
 
 ## Background
-Turtle is a fun and interactive game where a user attempts to push the limits of how large a turtle can grow! Grow in size by eating smaller turtles. But beware! Getting eaten by a larger turtle will lose you the game!
+Sponge & Squids is a fun and interactive game where a user(sponge) attempts to push the limits of just how long he/she can avoid those horrible squids! 
 
 ## Functionality
-The player will be able to move their turtle around the screen using the keyboard keys 'W', 'A', 'S', 'D' representing the four cardinal directions.
+The player will be able to move their sponge around the screen using the keyboard keys 'W', 'A', 'S', 'D' representing the four cardinal directions.
 
 ## Wireframes
 * This app will consist of a single screen with the simulation canvas, Play/Pause controls, and the About and Details modals.

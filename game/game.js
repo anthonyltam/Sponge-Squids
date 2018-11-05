@@ -1,14 +1,14 @@
-import Turtle from './turtle';
+import Squidward from './squidwards';
 import Player from './player';
 import Util from './util';
 
 class Game {
   constructor() {
-    this.turtles = [];
+    this.squidwards = [];
     this.user = [];
 
     // this.addPlayer();
-    this.addTurtles();
+    this.addsquidwards();
   }
 
   over() {
@@ -29,11 +29,11 @@ class Game {
     return [Util.wrap(pos[0], Game.DIM_X), Util.wrap(pos[1], Game.DIM_Y)];
   }
 
-  addTurtles() {
-    for (let i = 0; i < Game.NUM_TURTLES; i++) {
+  addsquidwards() {
+    for (let i = 0; i < Game.NUM_SQUIDWARDS; i++) {
       const direction = [-1, 1][Math.floor(Math.random() * 2)];
-      this.turtles.push(
-        new Turtle({
+      this.squidwards.push(
+        new Squidward({
           pos: this.randomPosition(direction),
           vel: [Math.ceil(Math.random() * 5) * direction, 0],
           rad: 10,
@@ -44,7 +44,7 @@ class Game {
   }
 
   allObjects() {
-    return this.user.concat(this.turtles);
+    return this.user.concat(this.squidwards);
   }
 
   isOutOfBounds(pos, rad = 0) {
@@ -86,8 +86,8 @@ class Game {
   }
 
   remove(object) {
-    if (object instanceof Turtle) {
-      this.turtles.splice(this.turtles.indexOf(object), 1);
+    if (object instanceof Squidward) {
+      this.squidwards.splice(this.squidwards.indexOf(object), 1);
     } else {
       let [x, y ] = this.user[0].vel;
       this.user[0].vel = [0 , 0];
@@ -95,7 +95,7 @@ class Game {
   }
 
   step(delta) {
-    // this.moveTurtles(delta);
+    // this.movesquidwards(delta);
     this.moveObjects(delta);
     this.checkCollisions();
   }
@@ -118,7 +118,8 @@ class Game {
 
 Game.DIM_X = 1000;
 Game.DIM_Y = 600;
+
 Game.BG_COLOR = 'orange';
-Game.NUM_TURTLES = 1;
+Game.NUM_SQUIDWARDS = 1;
 
 export default Game;
